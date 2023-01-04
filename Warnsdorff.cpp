@@ -8,20 +8,13 @@ pair<int,int>PP[1000003];
 int idx(int x,int y){
     return(x-1)*N+y;
 }
-bool flag=false;
-int cnt=0;
 int deg(int x){
     int ret=0;
     for(int y:G[x])ret+=vis[y]<=0;
     return ret;
 }
 void dfs(int x){
-    cnt++;
-    if(flag)return;
-    if(vis[x]==N*N){
-        flag=true;
-        return;
-    }
+    if(vis[x]==N*N)return;
     int mn=2e9,mx=0,nxt=0;
     for(int y:G[x]){
         if(vis[y])continue;
@@ -40,7 +33,6 @@ void dfs(int x){
     dfs(nxt);
 }
 int main(){
-    //freopen("input.txt","r",stdin);
     cin>>N;
     int x0,y0;cin>>x0>>y0;
     if(N<5){
